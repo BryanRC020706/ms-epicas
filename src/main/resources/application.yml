@@ -1,0 +1,19 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: epicas-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_jei
+    username: root
+    password: mysql
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
