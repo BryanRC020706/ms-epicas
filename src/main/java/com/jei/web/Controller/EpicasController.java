@@ -1,13 +1,13 @@
 package com.jei.web.Controller;
 
 import com.jei.applicacion.Service.EpicasService;
+import com.jei.dominio.entidad.Departamento;
+import com.jei.dominio.entidad.Estado;
 import com.jei.web.Dto.EpicasResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -18,9 +18,18 @@ public class EpicasController {
     private final EpicasService epicasService;
 
     @GetMapping
-    public ResponseEntity<List<EpicasResponseDto>> buscar() {
-        List<EpicasResponseDto> epicas = epicasService.buscar();
-        return ResponseEntity.ok(epicas);
+    public ResponseEntity<List<EpicasResponseDto>> buscar(@RequestParam(value = "departamento", required = false) Departamento departamento,
+                                                          @RequestParam(value = "estado", required = false) Estado estado) {
+        List<EpicasResponseDto> issues;
+
+        if (departamento != null && estado != null) {
+            issues = epicasService.buscarPorDepartamentoYEstado(departamento, estado);
+        }
+        else {
+            issues = epicasService.buscar();
+        }
+
+        return ResponseEntity.ok(issues);
     }
 
     @GetMapping("/{id}")
