@@ -19,9 +19,9 @@ public class Epicas {
     private String nombre;
     @Enumerated(EnumType.STRING)
     private Estado estado;
-    private String proyecto;
+    private Long proyecto;
     @Enumerated(EnumType.STRING)
     private Departamento departamento;
-    private String usuario;
+    private Long usuario;
     private LocalDate fecha;
 }

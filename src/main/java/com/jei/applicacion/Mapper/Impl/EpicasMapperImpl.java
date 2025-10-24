@@ -16,9 +16,9 @@ public class EpicasMapperImpl implements EpicasMapper {
         return Epicas.builder()
                 .nombre(epicasRequestDto.getNombre())
                 .estado(Estado.valueOf(epicasRequestDto.getEstado()))
-                .proyecto(epicasRequestDto.getProyecto())
+                .proyecto(Long.valueOf(epicasRequestDto.getProyecto()))
                 .departamento(Departamento.valueOf(epicasRequestDto.getDepartamento()))
-                .usuario(epicasRequestDto.getUsuario())
+                .usuario(Long.valueOf(epicasRequestDto.getUsuario()))
                 .fecha(epicasRequestDto.getFecha())
                 .build();
     }
@@ -29,9 +29,9 @@ public class EpicasMapperImpl implements EpicasMapper {
                 .id(epicas.getId())
                 .nombre(epicas.getNombre())
                 .estado(epicas.getEstado().name())
-                .proyecto(epicas.getProyecto())
+                .proyecto(String.valueOf(epicas.getProyecto()))
                 .departamento(epicas.getDepartamento().name())
-                .usuario(epicas.getUsuario())
+                .usuario(String.valueOf(epicas.getUsuario()))
                 .fecha(epicas.getFecha())
                 .build();
     }
