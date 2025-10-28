@@ -30,7 +30,6 @@ public class EpicasMapperImpl implements EpicasMapper {
                 .nombre(epicas.getNombre())
                 .estado(epicas.getEstado().name())
                 .departamento(epicas.getDepartamento().name())
-                .usuario(String.valueOf(epicas.getUsuario()))
                 .fecha(epicas.getFecha())
                 .build();
     }

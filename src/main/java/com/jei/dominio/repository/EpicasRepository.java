@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface EpicasRepository extends JpaRepository<Epicas, Long> {
     List<Epicas> findByDepartamentoAndEstado(Departamento departamento, Estado estado);
+    List<Epicas> findByDepartamento(Departamento departamento);
 }

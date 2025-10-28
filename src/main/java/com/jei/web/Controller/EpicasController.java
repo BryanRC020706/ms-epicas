@@ -26,7 +26,7 @@ public class EpicasController {
             issues = epicasService.buscarPorDepartamentoYEstado(departamento, estado);
         }
         else {
-            issues = epicasService.buscar();
+            issues = epicasService.buscarPorDepartamento(departamento);
         }
 
         return ResponseEntity.ok(issues);

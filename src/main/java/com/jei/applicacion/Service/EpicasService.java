@@ -10,4 +10,5 @@ public interface EpicasService {
     List<EpicasResponseDto> buscar();
     EpicasResponseDto buscarPorId(Long id);
     List<EpicasResponseDto> buscarPorDepartamentoYEstado(Departamento departamento, Estado estado);
+    List<EpicasResponseDto> buscarPorDepartamento(Departamento departamento);
 }
