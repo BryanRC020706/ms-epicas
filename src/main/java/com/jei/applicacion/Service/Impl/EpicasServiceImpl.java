@@ -74,10 +74,17 @@ public class EpicasServiceImpl implements EpicasService {
     public List<EpicasResponseDto> buscarPorDepartamentoYEstado(Departamento departamento, Estado estado) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        @SuppressWarnings("unchecked")
-        Map<String, Object> details = (Map<String, Object>) auth.getDetails();
-        String userDepartamento = (String) details.get("departamento");
-        String userRole = (String) details.get("role");
+        String userRole = "ADMIN";
+        String userDepartamento = "COMERCIAL";
+
+        if (auth != null && auth.getPrincipal() != null) {
+            Object principal = auth.getPrincipal();
+            if (principal instanceof Jwt jwt) {
+                userRole = jwt.getClaimAsString("role");
+                userDepartamento = jwt.getClaimAsString("departamento");
+            }
+        }
+
         Departamento departamentoFinal = "ADMIN".equalsIgnoreCase(userRole)
                 ? departamento
                 : Departamento.valueOf(userDepartamento);
