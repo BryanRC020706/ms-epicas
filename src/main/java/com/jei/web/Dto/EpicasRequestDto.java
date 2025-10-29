@@ -14,8 +14,8 @@ import java.time.LocalDate;
 public class EpicasRequestDto {
     private String nombre;
     private String estado;
-    private String proyecto;
+    private Long proyecto;
     private String departamento;
-    private String usuario;
+    private Long usuario;
     private LocalDate fecha;
 }
